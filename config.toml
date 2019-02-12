@@ -1,0 +1,16 @@
+[login]
+username = ""
+password = ""
+
+# Link fb threads to gateways
+[threads]
+   [threads.123]
+   gateway = "gateway2" 
+
+   [threads.1234]
+   gateway = "gateway3" 
+
+# Link user id to usernames
+[users]
+   [users.123]
+   username = "Joe Someone" 

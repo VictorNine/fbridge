@@ -1,0 +1,50 @@
+[xmpp.jabber]
+Server=""
+Jid=""
+Password=""
+Muc=""
+Nick=""
+RemoteNickFormat="<{NICK}> "
+
+[api.myapi]
+BindAddress="127.0.0.1:4242"
+Buffer=1000
+RemoteNickFormat="{NICK}"
+
+[[gateway]]
+name="defaultgateway"
+enable=true
+
+[[gateway.inout]]
+account="xmpp.jabber"
+channel="*channel name*"
+
+[[gateway.inout]]
+account="api.myapi"
+channel="api"
+
+## Add more gateways under this line
+
+[[gateway]]
+name="gateway2"
+enable=true
+
+[[gateway.inout]]
+account="xmpp.jabber"
+channel="*channel name*"
+
+[[gateway.inout]]
+account="api.myapi"
+channel="test2"
+
+[[gateway]]
+name="gateway3"
+enable=true
+
+[[gateway.inout]]
+account="xmpp.jabber"
+channel="*channel name*"
+
+[[gateway.inout]]
+account="api.myapi"
+channel="test3"
