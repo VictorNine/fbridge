@@ -1,5 +1,5 @@
 # fbridge
-fbridge bridges facebook messanger with any service supported by matterbridge trough the API interface. 
+fbridge bridges facebook messenger with any service supported by matterbridge trough the API interface. 
 
 fbMatter is using [fbchat](https://github.com/carpedm20/fbchat/) to connect to facebook.
 
