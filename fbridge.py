@@ -40,7 +40,7 @@ class FBListener(Client):
             username = author_id
 
         ## Set a gateway from the thread_id
-        gateway = "defaultgateway"
+        gateway = "FBgateway"
         if thread_id in threads:
             gateway = threads[thread_id]
 
@@ -56,8 +56,8 @@ def listen(fbClient):
                 if jmsg["gateway"] == "":
                     continue
                 
-                if jmsg["gateway"] == "defaultgateway":
-                    sendMsg("bot", "defaultgateway", "This gateway is linked to every thread on facebook and can't be used for sending messages.") 
+                if jmsg["gateway"] == "FBgateway":
+                    sendMsg("bot", "FBgateway", "This gateway is linked to every thread on facebook and can't be used for sending messages.") 
                 else:
                     fbThread = revThreads[jmsg["gateway"]]
                     if len(fbThread) > 10:

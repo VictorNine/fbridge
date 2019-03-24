@@ -11,8 +11,9 @@ BindAddress="127.0.0.1:4242"
 Buffer=1000
 RemoteNickFormat="{NICK}"
 
+## This is the default FB gateway. All facebook measseages will be sendt here
 [[gateway]]
-name="defaultgateway"
+name="FBgateway"
 enable=true
 
 [[gateway.inout]]

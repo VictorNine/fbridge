@@ -1,8 +1,10 @@
+#Facebook login
 [login]
 username = ""
 password = ""
 
 # Link fb threads to gateways
+# You get the thread id when a message is recived by the default gateway. 123 is used as thread id below.
 [threads]
    [threads.123]
    gateway = "gateway2" 
