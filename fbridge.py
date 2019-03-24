@@ -48,24 +48,25 @@ class FBListener(Client):
 
 def listen(fbClient):
         r = requests.get('http://localhost:4242/api/messages')
-        r = requests.get('http://localhost:4242/api/stream', stream=True)
-        for msg in r.iter_lines():
-            if msg:
-                print(msg)
-                jmsg = json.loads(msg)
-                if jmsg["gateway"] == "":
-                    continue
-                
-                if jmsg["gateway"] == "FBgateway":
-                    sendMsg("bot", "FBgateway", "This gateway is linked to every thread on facebook and can't be used for sending messages.") 
-                else:
-                    fbThread = revThreads[jmsg["gateway"]]
-                    if len(fbThread) > 10:
-                        threadType = ThreadType.GROUP
+        while True:
+            r = requests.get('http://localhost:4242/api/stream', stream=True)
+            for msg in r.iter_lines():
+                if msg:
+                    print(msg)
+                    jmsg = json.loads(msg)
+                    if jmsg["gateway"] == "":
+                        continue
+                    
+                    if jmsg["gateway"] == "FBgateway":
+                        sendMsg("bot", "FBgateway", "This gateway is linked to every thread on facebook and can't be used for sending messages.") 
                     else:
-                        threadType = ThreadType.USER
+                        fbThread = revThreads[jmsg["gateway"]]
+                        if len(fbThread) > 10:
+                            threadType = ThreadType.GROUP
+                        else:
+                            threadType = ThreadType.USER
 
-                    fbClient.send(Message(text=jmsg["text"]), thread_id=fbThread, thread_type=threadType)
+                        fbClient.send(Message(text=jmsg["text"]), thread_id=fbThread, thread_type=threadType)
         r.Close()
 
 
